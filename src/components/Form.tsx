@@ -1,5 +1,7 @@
 import { useState, Dispatch, SetStateAction } from "react";
-import { Search } from '../App'
+import { Search } from '../App';
+import Error from './Error';
+
 
 const Form: React.FC<{ 
    search: Search, 
@@ -44,6 +46,8 @@ const Form: React.FC<{
 
    return (
       <form onSubmit={handleSubmit}>
+
+         {error? <Error msg = 'All fields are required' /> : "" }
          
          <label htmlFor='city'>City: </label>
         <input 

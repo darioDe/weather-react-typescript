@@ -1,4 +1,8 @@
-const Error: React.FC<msg: any> = ({ msg }) => {
+type ErrorProps = {
+   msg : string;
+};
+
+const Error: React.FC<ErrorProps> = ({ msg }) => {
    return (
       <p>
          {msg}

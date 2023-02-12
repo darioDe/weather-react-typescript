@@ -5,6 +5,7 @@ import Form from './components/Form';
 import Climate from './components/Climate';
 import Error from './components/Error';
 
+// Interface for API data
 export interface ResultAPI {
   name: string;
   main: {
@@ -14,7 +15,6 @@ export interface ResultAPI {
   }
 
 }
-
 // Interface to search state
 export interface Search {
   city: string;
@@ -48,7 +48,17 @@ function App() {
 
         // Get results
         const result: any = await response.json();
-
+        console.log(result);
+       
+        // Check if there where correct results on search
+        if(result.cod ==='404') {
+        
+          setError(true);
+          setResult(undefined)
+          setConsult(false)
+          return;
+          
+        } 
         
         // Selection importants items of results
         const selectResult = {
@@ -58,24 +68,14 @@ function App() {
             temp_min: result.main.temp_min,
             temp_max: result.main.temp_max,
           }
-        }
-
-        console.log(result);
+        }      
         // Save the select
         setResult(selectResult);
-
         console.log(selectResult);
         // Change the cosult to false to alow another search
         setConsult(false);
-
-        // Check if there where correct results on search
-        if(result.cod ==='404') {
-          setError(true);
-          setConsult(false)
-        } else {
-          setError(false);
-        };
-        
+        setError(false);
+          
       }
     }
 
@@ -88,9 +88,9 @@ function App() {
     <div className="App">
       <Header />
       <Form search={search} setSearch={setSearch} setConsult={setConsult} />
-      { Error ? 
+      { error ? 
         <Error msg={'There are no results for your search'}/> 
-        : <Climate result={result} /> 
+        : <Climate result={result} />
       }
     </div>
   )

@@ -4,7 +4,7 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
    if (!result) return null;
 
    // Desestructuring values of result
-   const { name, main } = result;
+   const { name, main, weather } = result;
 
    if (!name) return null;
 
@@ -16,8 +16,9 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
    const temperature: string = (main.temp - kelvin).toFixed(0);
    const temperatureMax: string = (main.temp_max - kelvin).toFixed(0);
    const temperatureMin: string = (main.temp_min - kelvin).toFixed(0);
-
+   const description: string = weather[0].description;
    console.log(temperatureMax)
+   console.log(description);
 
    return (
       <div>
@@ -25,6 +26,7 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
          <p>{ temperature } <span> &#x2103; </span></p>
          <p>{ temperatureMax } <span> &#x2103; </span></p>
          <p>{ temperatureMin } <span> &#x2103; </span></p>
+         <p>{ description }</p>
       </div>
    )
 };

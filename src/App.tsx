@@ -12,8 +12,12 @@ export interface ResultAPI {
     temp: number;
     temp_max: number;
     temp_min: number;
-  }
-
+  },
+  weather: [
+    {
+      description: string;
+    }
+  ]
 }
 // Interface to search state
 export interface Search {
@@ -45,7 +49,7 @@ function App() {
         const url: string = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
         // Call to API
         const response: Response = await fetch(url);
-
+        
         // Get results
         const result: any = await response.json();
         console.log(result);
@@ -61,13 +65,18 @@ function App() {
         } 
         
         // Selection importants items of results
-        const selectResult = {
+        const selectResult: ResultAPI = {
           name: result.name,
           main: {
             temp: result.main.temp,
             temp_min: result.main.temp_min,
             temp_max: result.main.temp_max,
-          }
+          },
+          weather: [
+            {
+              description: result.weather[0].description,
+            },
+          ]
         }      
         // Save the select
         setResult(selectResult);

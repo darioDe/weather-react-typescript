@@ -12,6 +12,7 @@ export interface ResultAPI {
     temp: number;
     temp_max: number;
     temp_min: number;
+    humidity: number;
   },
   weather: [
     {
@@ -29,11 +30,13 @@ function App() {
   // State to form
   const [search, setSearch] = useState<Search>({city: '', country: '',});
   // State to consulting
-  const [consult, setConsult] = useState<boolean>(false)
+  const [consult, setConsult] = useState<boolean>(false);
   // State to save result
   const [result, setResult] = useState<undefined|ResultAPI>(undefined);
   // State to verify error
-  const [error, setError] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(false);
+  // State to save Climate of Place
+  const [list, setList] = useState({});
 
   // Desesctructuring search
   const { city, country } = search;
@@ -71,6 +74,7 @@ function App() {
             temp: result.main.temp,
             temp_min: result.main.temp_min,
             temp_max: result.main.temp_max,
+            humidity: result.main.humidity,
           },
           weather: [
             {

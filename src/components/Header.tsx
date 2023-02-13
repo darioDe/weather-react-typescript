@@ -1,10 +1,9 @@
-
-
 const Header = () => {
 
    return (
       <header>
-         <h1>ReacTS to Climate</h1>
+         <h1>Climates ReacTS</h1>
+         <p> Find the weather of any city you want!</p>
       </header>
    )
 

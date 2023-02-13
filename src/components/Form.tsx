@@ -1,6 +1,7 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { Search } from '../App';
 import Error from './Error';
+import './Form.css'
 
 
 const Form: React.FC<{ 
@@ -49,24 +50,14 @@ const Form: React.FC<{
 
          {error? <Error msg = 'All fields are required' /> : "" }
          
-         <label htmlFor='city'>City: </label>
-        <input 
-            type='text'
-            name='city'
-            id='city'
-            value={city}
-            onChange={handleChange} 
-         />
-         
-
-         <label htmlFor='country'>Country: </label>
+         <label htmlFor='country'></label>
          <select 
             name='country' 
             id='country'
             value={country}
             onChange={handleChange}
          >
-            <option value='' >-- Select Country</option>
+            <option value='' >-- Select The Country</option>
             <option value='US' > United States </option>
             <option value='MX' > Mexico </option>
             <option value='AR' > Argentina </option>
@@ -76,11 +67,22 @@ const Form: React.FC<{
             <option value='PE' > Perú </option>
          </select>
 
-         <input 
-            type='submit'
-            value='SEARCH'
-         />
+         <div className='city-submit'>
+            <label htmlFor='city'></label>
+            <input 
+               type='text'
+               name='city'
+               id='city'
+               value={city}
+               onChange={handleChange}
+               placeholder='City Name'
+            />
 
+            <input 
+               type='submit'
+               value='S'
+            />
+         </div>
          {error ? <p> All fields are Required </p> : null} 
       </form>
    )

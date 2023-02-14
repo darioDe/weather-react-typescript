@@ -81,6 +81,7 @@ const Form: React.FC<{
             <input 
                type='submit'
                value='S'
+               className='submit'
             />
          </div>
          {error ? <p> All fields are Required </p> : null} 

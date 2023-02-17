@@ -1,8 +1,12 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { Search } from '../App';
 import Error from './Error';
-import './Form.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+const SearchIcon = () => {
+   return <FontAwesomeIcon icon={faSearch} />
+ }
 
 const Form: React.FC<{ 
    search: Search, 
@@ -57,7 +61,7 @@ const Form: React.FC<{
             value={country}
             onChange={handleChange}
          >
-            <option value='' >-- Select The Country</option>
+            <option value='' style={{color:'black'}}>-- Select The Country</option>
             <option value='US' > United States </option>
             <option value='MX' > Mexico </option>
             <option value='AR' > Argentina </option>
@@ -75,14 +79,15 @@ const Form: React.FC<{
                id='city'
                value={city}
                onChange={handleChange}
-               placeholder='City Name'
+               placeholder='-- Read city Name'
             />
 
-            <input 
+            <button 
                type='submit'
-               value='S'
                className='submit'
-            />
+            >
+               <SearchIcon />
+            </button>
          </div>
          {error ? <p> All fields are Required </p> : null} 
       </form>

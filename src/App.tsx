@@ -1,18 +1,8 @@
 import { useState, useEffect } from 'react';
-import './App.css';
 import Header from './components/Header';
 import Form from './components/Form';
 import Climate from './components/Climate';
 import Error from './components/Error';
-import afternoon from '/afternoon.jpg';
-import cloudy from '/cloudy.jpg';
-import images from '/images.jpg';
-import moon from '/moon.jpg';
-import rainy from '/rainy.jpg';
-import snowy from '/snowy.jpg';
-
-// Images array
-const backgrounds = [afternoon, cloudy, images, moon, rainy, snowy];
 
 // Interface for API data
 export interface ResultAPI {
@@ -37,7 +27,7 @@ export interface Search {
 
 function App() {
   // State for background
-  const [background, setBackground] = useState(backgrounds[0]);
+  // const [background, setBackground] = useState(backgrounds[0]);
   // State to form
   const [search, setSearch] = useState<Search>({city: '', country: '',});
   // State to consulting
@@ -105,25 +95,14 @@ function App() {
 
     consultAPI ()
   },[consult]);
-
-  // Effect for slider background
-  useEffect(() => {
-    const intervalid = setInterval(() => {
-      setBackground(backgrounds[Math.floor(Math.random() * backgrounds.length)]);
-    }, 5000);
-    return () => clearInterval(intervalid);
-  }, []);
   
   return (
-    <div className="App" 
-      style={{
-        backgroundImage: `url(${background})`,
-        backgroundSize: 'cover',
-        height: '100vh'
-      }}
+    <div className="App"
     >
-      <Header />
-      <Form search={search} setSearch={setSearch} setConsult={setConsult} />
+      <div className='title-box'>
+        <Header />
+        <Form search={search} setSearch={setSearch} setConsult={setConsult} />
+      </div>
       { error ? 
         <Error msg={'There are no results for your search'}/> 
         : <Climate result={result} />

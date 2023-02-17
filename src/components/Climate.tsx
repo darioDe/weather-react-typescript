@@ -18,17 +18,30 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
    const temperatureMin: string = (main.temp_min - kelvin).toFixed(0);
    const humidity: string = (main.humidity).toString();
    const description: string = weather[0].description;
+   // Vars for Date
+   const today: Date = new Date();
+   const dayOfWeek: string = today.toLocaleDateString('en-US', { weekday: 'long' });
+   const dayOfMonth: string = today.toLocaleDateString('en-US', { day: 'numeric' });
+   const month: string = today.toLocaleDateString('en-US', { month: 'long' });
+   const year: number = today.getFullYear();
+   // Concat the string for the date
+   const dateString: string = `${dayOfWeek}, ${dayOfMonth} ${month} ${year}`;
    console.log(temperatureMax)
    console.log(humidity);
 
    return (
-      <div>
+      <div className='box'>
          <h2>{ name }</h2>
-         <p>{ temperature } <span> &#x2103; </span></p>
-         <p>{ temperatureMax } <span> &#x2103; </span></p>
-         <p>{ temperatureMin } <span> &#x2103; </span></p>
-         <p>{ description.toUpperCase() }</p>
-         <p>{ humidity }</p>
+         <p>{dateString}</p>
+         <div className='flex-row'>
+            <h1>{ temperature } <span> &#x2103; </span></h1>
+            <div className='flex-column'>
+               <p>max: { temperatureMax } <span> &#x2103; </span></p>
+               <p>min: { temperatureMin } <span> &#x2103; </span></p>
+            </div>
+         </div>
+         <p className='description'>{ description.toUpperCase() }</p>
+         <p className='humidity'>Humidity: { humidity }%</p>
       </div>
    )
 };

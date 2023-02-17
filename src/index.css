@@ -31,7 +31,7 @@ header {
 
 }
 
-.title-box {
+.box {
   background-color: #00000085;
   max-width: 500px;
   border-radius: 0.5rem;
@@ -71,3 +71,21 @@ form select {
   width: inherit;
 }
 
+.description {
+  color: #8892cd;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.humidity {
+ color: #cddc39;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

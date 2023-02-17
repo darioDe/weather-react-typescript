@@ -99,7 +99,7 @@ function App() {
   return (
     <div className="App"
     >
-      <div className='title-box'>
+      <div className='box'>
         <Header />
         <Form search={search} setSearch={setSearch} setConsult={setConsult} />
       </div>

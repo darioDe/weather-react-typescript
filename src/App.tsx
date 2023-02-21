@@ -13,6 +13,9 @@ export interface ResultAPI {
     temp_min: number;
     humidity: number;
   },
+  sys: {
+    country: string;
+  },
   weather: [
     {
       description: string;
@@ -77,6 +80,9 @@ function App() {
             temp_max: result.main.temp_max,
             humidity: result.main.humidity,
           },
+          sys: {
+            country: result.sys.country,
+          },
           weather: [
             {
               description: result.weather[0].description,
@@ -104,7 +110,7 @@ function App() {
         <Form search={search} setSearch={setSearch} setConsult={setConsult} />
       </div>
       { error ? 
-        <Error msg={'There are no results for your search'}/> 
+        <Error msg={'There are no results for your search!!'}/> 
         : <Climate result={result} />
       }
     </div>

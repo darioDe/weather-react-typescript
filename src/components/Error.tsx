@@ -4,7 +4,7 @@ type ErrorProps = {
 
 const Error: React.FC<ErrorProps> = ({ msg }) => {
    return (
-      <p>
+      <p className="error-msg">
          {msg}
       </p>
 

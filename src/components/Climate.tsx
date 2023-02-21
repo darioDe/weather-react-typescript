@@ -1,10 +1,14 @@
 import { ResultAPI } from '../App';
+import { RiSunLine } from 'react-icons/ri';
+import { BsCloudRain, BsFillCloudSunFill, BsFillCloudyFill } from 'react-icons/bs';
+
+
 
 const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
    if (!result) return null;
 
    // Desestructuring values of result
-   const { name, main, weather } = result;
+   const { name, main, sys, weather } = result;
 
    if (!name) return null;
 
@@ -18,6 +22,8 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
    const temperatureMin: string = (main.temp_min - kelvin).toFixed(0);
    const humidity: string = (main.humidity).toString();
    const description: string = weather[0].description;
+   const country: string = sys.country;
+
    // Vars for Date
    const today: Date = new Date();
    const dayOfWeek: string = today.toLocaleDateString('en-US', { weekday: 'long' });
@@ -31,16 +37,36 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
 
    return (
       <div className='box'>
-         <h2>{ name }</h2>
+         <h2>{ name }, {country}</h2>
          <p>{dateString}</p>
-         <div className='flex-row'>
-            <h1>{ temperature } <span> &#x2103; </span></h1>
-            <div className='flex-column'>
+
+         <div className='flex-column'>
+            <div className='flex-row'>
+               <p className='temp'>{ temperature } <span> ° </span></p>
+               { (description === 'clear sky') ? 
+                  <RiSunLine className='icon'/> :
+                  (description === 'broken clouds') ?
+                  <BsFillCloudSunFill className='icon' /> :
+                  (description === 'overcast clouds' 
+                  || description === 'few clouds'
+                  || description === 'overcast clouds' 
+                  || description === 'scattered clouds') ?
+                  <BsFillCloudyFill className='icon' /> :
+
+                  // (description === 'few clouds') ? 
+                  // <BsCloudRain className='icon'/> :
+                  ''
+                  
+
+               }
+            </div>
+            <div className='flex-row'>
                <p>max: { temperatureMax } <span> &#x2103; </span></p>
                <p>min: { temperatureMin } <span> &#x2103; </span></p>
             </div>
          </div>
          <p className='description'>{ description.toUpperCase() }</p>
+         
          <p className='humidity'>Humidity: { humidity }%</p>
       </div>
    )

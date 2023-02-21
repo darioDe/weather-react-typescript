@@ -1,6 +1,5 @@
 import { useState, Dispatch, SetStateAction } from "react";
 import { Search } from '../App';
-import Error from './Error';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -51,8 +50,6 @@ const Form: React.FC<{
 
    return (
       <form onSubmit={handleSubmit}>
-
-         {error? <Error msg = 'All fields are required' /> : "" }
          
          <label htmlFor='country'></label>
          <select 
@@ -62,13 +59,55 @@ const Form: React.FC<{
             onChange={handleChange}
          >
             <option value='' style={{color:'black'}}>-- Select The Country</option>
-            <option value='US' > United States </option>
-            <option value='MX' > Mexico </option>
+            <option value='AT' > Austria </option>
+            <option value='AU' > Australia </option>
+            <option value='AM' > Armenia </option>
             <option value='AR' > Argentina </option>
+            <option value='BS' > Bahamas </option>
+            <option value='BD' > Bangladesh </option>
+            <option value='BE' > Belgica </option>
+            <option value='BR' > Brasil </option>
+            <option value='GB' > Britain </option>
+            <option value='CA' > Canada </option>
+            <option value='CH' > Suiza </option>
+            <option value='CI' > Ivory Coast </option>
+            <option value='CL' > Chile </option>
+            <option value='CM' > Cameroon </option>
+            <option value='CN' > China </option>
             <option value='CO' > Colombia </option>
-            <option value='CR' > Costa Rica </option>   
-            <option value='ES' > España </option>
-            <option value='PE' > Perú </option>
+            <option value='CR' > Costa Rica </option>
+            <option value='HR' > Croatia </option>
+            <option value='CU' > Cuba </option>
+            <option value='DO' > Dominican Republic </option>
+            <option value='DK' > Denmark </option>
+            <option value='EC' > Ecuador </option>
+            <option value='FI' > Finland </option>
+            <option value='FR' > France </option>
+            <option value='DE' > Germany </option>   
+            <option value='GR' > Greece </option>
+            <option value='HN' > Honduras </option>
+            <option value='ES' > Spain </option>
+            <option value='FK' > Islas Malvinas </option>
+            <option value='IE' > Irland </option>
+            <option value='IL' > Israel </option>
+            <option value='IN' > India </option>
+            <option value='IT' > Italy </option>
+            <option value='JP' > Japan </option>
+            <option value='KP' > North Korea </option>
+            <option value='KR' > South Korea </option>
+            <option value='NG' > Nigeria </option>
+            <option value='NO' > Norway </option>
+            <option value='NZ' > New Zeland </option>
+            <option value='PR' > Puerto Rico </option>
+            <option value='PT' > Portugal </option>
+            <option value='RU' > Rusia </option>
+            <option value='SA' > Saudi Arabia </option>
+            <option value='UA' > Ukrain </option>
+            <option value='UY' > Uruguay </option>
+            <option value='US' > United States </option>
+            <option value='VE' > Venezuela </option>
+            <option value='ZA' > South Africa </option>
+
          </select>
 
          <div className='city-submit'>
@@ -89,7 +128,7 @@ const Form: React.FC<{
                <SearchIcon />
             </button>
          </div>
-         {error ? <p> All fields are Required </p> : null} 
+         {error ? <p className="error-msg"> All fields are Required!! </p> : null} 
       </form>
    )
 

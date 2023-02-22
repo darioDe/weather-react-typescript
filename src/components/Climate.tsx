@@ -1,6 +1,15 @@
 import { ResultAPI } from '../App';
-import { RiSunLine } from 'react-icons/ri';
-import { BsCloudRain, BsFillCloudSunFill, BsFillCloudyFill } from 'react-icons/bs';
+import { RiSunLine, 
+   RiThunderstormsLine, 
+   RiMistLine 
+} from 'react-icons/ri';
+import { BsCloudRain, 
+   BsFillCloudSunFill, 
+   BsFillCloudyFill, 
+   BsSnow3,
+   BsArrowDownCircleFill,
+   BsFillArrowUpCircleFill 
+} from 'react-icons/bs';
 
 
 
@@ -43,7 +52,9 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
          <div className='flex-column'>
             <div className='flex-row'>
                <p className='temp'>{ temperature } <span> ° </span></p>
-               { (description === 'clear sky') ? 
+
+               { 
+                  (description === 'clear sky') ? 
                   <RiSunLine className='icon'/> :
                   (description === 'broken clouds') ?
                   <BsFillCloudSunFill className='icon' /> :
@@ -52,17 +63,25 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
                   || description === 'overcast clouds' 
                   || description === 'scattered clouds') ?
                   <BsFillCloudyFill className='icon' /> :
-
-                  // (description === 'few clouds') ? 
-                  // <BsCloudRain className='icon'/> :
-                  ''
-                  
-
+                  (description === 'drizzle' 
+                  || description === 'rain' 
+                  || description === 'shower rain') ? 
+                  <BsCloudRain className='icon'/> :
+                  (description === 'thunderstorm') ? 
+                  <RiThunderstormsLine className='icon'/> :
+                  (description === 'snow' || description === 'light snow') ? 
+                  <BsSnow3 className='icon'/> :
+                  (description === 'mist') ? 
+                  <RiMistLine className='icon'/> :
+                  <BsFillCloudyFill className='icon' />
                }
+
             </div>
             <div className='flex-row'>
-               <p>max: { temperatureMax } <span> &#x2103; </span></p>
-               <p>min: { temperatureMin } <span> &#x2103; </span></p>
+               <BsFillArrowUpCircleFill className='max'/>
+               <p className='min-max'> { temperatureMax } <span> ° </span></p>
+               <BsArrowDownCircleFill className='min'/> 
+               <p className='min-max'> { temperatureMin } <span> ° </span></p>
             </div>
          </div>
          <p className='description'>{ description.toUpperCase() }</p>

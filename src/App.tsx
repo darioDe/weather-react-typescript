@@ -55,7 +55,7 @@ function App() {
         // URL to call API
         const url: string = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
         // Call to API
-        const response: Response = await fetch(url);
+        const response: Response = await fetch(url, {mode: 'no-cors'});
         
         // Get results
         const result: any = await response.json();

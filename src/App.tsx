@@ -53,9 +53,9 @@ function App() {
         // API id
         const appId: string = 'd4e0eba9a4f32e88e186660afc7dbf17';
         // URL to call API
-        const url: string = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
+        const url: string = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`;
         // Call to API
-        const response: Response = await fetch(url, {mode: 'no-cors'});
+        const response: Response = await fetch(url);
         
         // Get results
         const result: any = await response.json();

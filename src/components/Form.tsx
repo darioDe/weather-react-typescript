@@ -38,6 +38,9 @@ const Form: React.FC<{
       // Validate
       if(city.trim() === '' || country.trim() === '') {
          setError(true);
+         setTimeout(() => {
+            setError(false);
+          }, 3000);
          return;
       }
 
@@ -50,6 +53,8 @@ const Form: React.FC<{
 
    return (
       <form onSubmit={handleSubmit}>
+
+         <h2> Find the weather of any city! </h2>
          
          <label htmlFor='country'></label>
          <select 
@@ -119,6 +124,7 @@ const Form: React.FC<{
                value={city}
                onChange={handleChange}
                placeholder='-- Read city Name'
+               className='city-input'
             />
 
             <button 
@@ -128,7 +134,8 @@ const Form: React.FC<{
                <SearchIcon />
             </button>
          </div>
-         {error ? <p className="error-msg"> All fields are Required!! </p> : null} 
+         {error ? 
+            <p className="error-msg"> All fields are Required!! </p> : null} 
       </form>
    )
 

@@ -65,6 +65,9 @@ function App() {
         if(result.cod ==='404') {
         
           setError(true);
+          setTimeout(() => {
+            setError(false);
+          }, 3000);
           setResult(undefined)
           setConsult(false)
           return;
@@ -105,8 +108,8 @@ function App() {
   return (
     <div className="App"
     >
+      <Header />
       <div className='box'>
-        <Header />
         <Form search={search} setSearch={setSearch} setConsult={setConsult} />
       </div>
       { error ? 

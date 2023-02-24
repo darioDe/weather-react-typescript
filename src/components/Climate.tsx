@@ -1,7 +1,7 @@
 import { ResultAPI } from '../App';
 import { RiSunLine, 
    RiThunderstormsLine, 
-   RiMistLine 
+   RiMistLine
 } from 'react-icons/ri';
 import { BsCloudRain, 
    BsFillCloudSunFill, 
@@ -46,6 +46,7 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
 
    return (
       <div className='box'>
+         <div></div>
          <h2>{ name }, {country}</h2>
          <p>{dateString}</p>
 

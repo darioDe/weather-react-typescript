@@ -5,7 +5,7 @@
 }
 
 body {
-  background-image: url('/public/0LSiZYPwozE-1024x576-MM-80.webp');
+  background-image: url('/public/rainy.jpg');
   height: 120vh;
   background-size: cover;
   display: flex;
@@ -25,13 +25,14 @@ body {
 header {
   text-align: center;
   width: 15rem;
+  margin: 2rem auto;
 }
 
 .box {
   background-color: #00000085;
   max-width: 500px;
   border-radius: 0.5rem;
-  border: 0.2rem solid #757373;
+  /* border: 0.2rem solid #757373; */
   padding: 2rem;
   margin: 2rem 0;
   display: flex;
@@ -58,9 +59,26 @@ form {
   gap: 1rem;
 }
 
-form select { 
+select {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  box-shadow: none;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   width: 14rem;
-  height: 2.3rem;
+}
+
+select::after {
+  content: "\25BC"; /* Unicode para la flecha hacia abajo */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .city-submit {
@@ -69,8 +87,22 @@ form select {
   height: 2.3rem;
 }
 
+.city-input {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  box-shadow: none;
+  font-size: 16px;
+  width: 11rem;
+}
+
 .submit {
   width: 5rem;
+  border: none;
+}
+
+.submit:hover {
+  background-color: #535151;
 }
 
 .description {

@@ -8,6 +8,7 @@ body {
   background-image: url('/public/rainy.jpg');
   height: 120vh;
   background-size: cover;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   overflow-x: hidden;

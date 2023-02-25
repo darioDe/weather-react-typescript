@@ -7,9 +7,12 @@ import { BsCloudRain,
    BsFillCloudSunFill, 
    BsFillCloudyFill, 
    BsSnow3,
-   BsArrowDownCircleFill,
-   BsFillArrowUpCircleFill 
 } from 'react-icons/bs';
+import { FaArrowUp, 
+   FaArrowDown,
+   FaMapMarkerAlt,
+   FaTint,
+} from 'react-icons/fa';
 
 
 
@@ -46,8 +49,10 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
 
    return (
       <div className='box'>
-         <div></div>
+         <div className="flex-row"> 
+            <FaMapMarkerAlt className='marker'/>
          <h2>{ name }, {country}</h2>
+         </div>
          <p>{dateString}</p>
 
          <div className='flex-column'>
@@ -56,22 +61,22 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
 
                { 
                   (description === 'clear sky') ? 
-                  <RiSunLine className='icon'/> :
+                  <RiSunLine className='icon sun'/> :
                   (description === 'broken clouds') ?
-                  <BsFillCloudSunFill className='icon' /> :
+                  <BsFillCloudSunFill className='icon cloud' /> :
                   (description === 'overcast clouds' 
                   || description === 'few clouds'
                   || description === 'overcast clouds' 
                   || description === 'scattered clouds') ?
-                  <BsFillCloudyFill className='icon' /> :
+                  <BsFillCloudyFill className='icon cloud' /> :
                   (description === 'drizzle' 
                   || description === 'rain' 
                   || description === 'shower rain') ? 
-                  <BsCloudRain className='icon'/> :
+                  <BsCloudRain className='icon cloud'/> :
                   (description === 'thunderstorm') ? 
-                  <RiThunderstormsLine className='icon'/> :
+                  <RiThunderstormsLine className='icon cloud'/> :
                   (description === 'snow' || description === 'light snow') ? 
-                  <BsSnow3 className='icon'/> :
+                  <BsSnow3 className='icon snow'/> :
                   (description === 'mist') ? 
                   <RiMistLine className='icon'/> :
                   <BsFillCloudyFill className='icon' />
@@ -79,15 +84,19 @@ const Climate: React.FC<{result: ResultAPI | undefined}> = ({ result }) => {
 
             </div>
             <div className='flex-row'>
-               <BsFillArrowUpCircleFill className='max'/>
-               <p className='min-max'> { temperatureMax } <span> ° </span></p>
-               <BsArrowDownCircleFill className='min'/> 
-               <p className='min-max'> { temperatureMin } <span> ° </span></p>
+               <FaArrowUp className='max'/>
+               <p className='min-max'> { temperatureMax } <span> ° max </span></p>
+               <FaArrowDown className='min'/> 
+               <p className='min-max'> { temperatureMin } <span> ° min </span></p>
             </div>
          </div>
+         
          <p className='description'>{ description.toUpperCase() }</p>
          
-         <p className='humidity'>Humidity: { humidity }%</p>
+         <div className='flex-row'>
+            <FaTint className='water' />
+            <p className='humidity'>Humidity: { humidity }%</p>
+         </div>
       </div>
    )
 };

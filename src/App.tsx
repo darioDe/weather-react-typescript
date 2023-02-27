@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Form from './components/Form';
 import Climate from './components/Climate';
 import Error from './components/Error';
+import Loader from './components/Loader';
 
 // Interface for API data
 export interface ResultAPI {
@@ -39,6 +40,8 @@ function App() {
   const [result, setResult] = useState<undefined|ResultAPI>(undefined);
   // State to verify error
   const [error, setError] = useState<boolean>(false);
+  // State to use Loader Component
+  const [loader, setLoader] = useState<boolean>(false);
   // State to save Climate of Place
   const [list, setList] = useState({});
 
@@ -50,6 +53,9 @@ function App() {
     const consultAPI = async () => {
 
       if(consult){
+
+        // Show loader
+        setLoader(true);
         // API id
         const appId: string = 'd4e0eba9a4f32e88e186660afc7dbf17';
         // URL to call API
@@ -99,6 +105,11 @@ function App() {
         setConsult(false);
         setError(false);
           
+        // Hide loader and show climate after 3 seconds
+        setTimeout(() => {
+          setLoader(false);
+          setList(selectResult);
+        }, 500);
       }
     }
 
@@ -108,14 +119,21 @@ function App() {
   return (
     <div className="App"
     >
+      
       <Header />
       <div className='box'>
         <Form search={search} setSearch={setSearch} setConsult={setConsult} />
       </div>
       { error ? 
         <Error msg={'There are no results for your search!!'}/> 
-        : <Climate result={result} />
+        : (
+          loader ? <Loader /> :
+          <div className='fade-down'>
+            <Climate result={result} />
+          </div>
+        )
       }
+      
     </div>
   )
 }

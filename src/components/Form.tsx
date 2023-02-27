@@ -123,7 +123,7 @@ const Form: React.FC<{
                id='city'
                value={city}
                onChange={handleChange}
-               placeholder='-- Read city Name'
+               placeholder='Here the City Name'
                className='city-input'
             />
 

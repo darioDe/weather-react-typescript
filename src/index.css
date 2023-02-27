@@ -20,6 +20,9 @@ body {
 
 .App {
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 header {
@@ -288,4 +291,30 @@ select::after {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.contact {
+  background-color: #00000085;
+  border-radius: 0.5rem;
+  width: fit-content;
+  padding: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.network {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+a:hover {
+  color: #535151;
 }

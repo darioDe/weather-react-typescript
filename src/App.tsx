@@ -4,6 +4,7 @@ import Form from './components/Form';
 import Climate from './components/Climate';
 import Error from './components/Error';
 import Loader from './components/Loader';
+import Contact from './components/Contact';
 
 // Interface for API data
 export interface ResultAPI {
@@ -105,7 +106,7 @@ function App() {
         setConsult(false);
         setError(false);
           
-        // Hide loader and show climate after 3 seconds
+        // Hide loader and show climate after 1/2 second
         setTimeout(() => {
           setLoader(false);
           setList(selectResult);
@@ -119,11 +120,12 @@ function App() {
   return (
     <div className="App"
     >
-      
+      <Contact />
       <Header />
       <div className='box'>
         <Form search={search} setSearch={setSearch} setConsult={setConsult} />
       </div>
+
       { error ? 
         <Error msg={'There are no results for your search!!'}/> 
         : (
@@ -133,7 +135,6 @@ function App() {
           </div>
         )
       }
-      
     </div>
   )
 }
